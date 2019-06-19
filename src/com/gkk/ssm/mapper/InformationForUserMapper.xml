@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkk.ssm.mapper.InformationForUserMapper" >
+	<select id="findByUserId" resultType="com.gkk.ssm.po.InformationForUser" parameterType="int">
+		SELECT * FROM informationforuser WHERE userid=#{userid}
+	</select>
+	
+	<select id="findById" resultType="com.gkk.ssm.po.InformationForUser" parameterType="int">
+		SELECT * FROM informationforuser WHERE id=#{id}
+	</select>
+	
+	<insert id="insertInformation" parameterType="com.gkk.ssm.po.InformationForUser">
+		INSERT INTO informationforuser
+		(nickname,birthday,email,tel,userid,instruction,address,registertime)
+		VALUES(#{nickname},#{birthday},#{email},#{tel},#{userid},#{instruction},#{address},#{registertime})
+	</insert>
+	<update id="updateInformation" parameterType="com.gkk.ssm.po.InformationForUser">
+		update informationforuser set nickname=#{nickname},birthday=#{birthday},email=#{email},
+		tel=#{tel},userid=#{userid},instruction=#{instruction},address=#{address},registertime=#{registertime}
+		where id=#{id}
+	</update>
+	
+	<delete id="deleteInformation" parameterType="int">
+		delete from informationforuser where id=#{id}
+	</delete>
+</mapper>

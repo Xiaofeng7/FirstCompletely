@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gkk.ssm.mapper.UserAccountMapper" >
+
+	<select id="findAccount" resultType="com.gkk.ssm.po.UserAccount" parameterType="string">
+		SELECT * FROM useraccount WHERE username = #{username}
+	</select>
+	
+	<insert id="insertAccount" parameterType="com.gkk.ssm.po.UserAccount" >
+		<selectKey keyProperty="id" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		
+		INSERT INTO useraccount
+		(username,passwd)
+		VALUES(#{username},#{passwd})
+	</insert>
+	
+	<select id="findAccountById" resultType="com.gkk.ssm.po.UserAccount" parameterType="int">
+		SELECT * FROM useraccount WHERE id=#{id}
+	</select>
+	
+	<delete id="deleteAccount" parameterType="int">
+		DELETE FROM useraccount WHERE id = #{id}
+	</delete>
+	
+	<update id="updatePassword" parameterType="com.gkk.ssm.po.Instrument">
+		UPDATE useraccount set passwd=#{passwd} WHERE username = #{username}
+	</update>
+</mapper>

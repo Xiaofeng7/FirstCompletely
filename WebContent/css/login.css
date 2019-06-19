@@ -1,0 +1,25 @@
+.login{
+	position: absolute;
+	left: 40%;
+	top: 250px;
+	font-size: 30px;
+	width: 350px;
+	height: 400px;
+	color:white;
+}
+input{
+	width: 300px;
+	height: 40px;
+	opacity: 0.7;
+	border-radius: 50px;
+}
+select{
+	width: 250px;
+	height: 30px;
+}
+body{
+	background: url(/CS/img/loginbg.jpg);
+}
+a{
+	color:red;
+}

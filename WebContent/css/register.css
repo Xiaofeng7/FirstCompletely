@@ -1,0 +1,30 @@
+.login{
+	position: absolute;
+	left: 35%;
+	top: 150px;
+	font-size: 30px;
+	color:white
+}
+a{
+	color:red;
+}
+tr{
+	width: 250px;
+	height: 30px;
+	text-align: center;
+}
+input{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	padding: 0.4em 0.25em;
+	border-radius: 50px;
+	color:white;
+}
+select{
+	width: 250px;
+	height: 30px;
+}
+body{
+	background: url(/CS/img/infor.jpg);
+}
