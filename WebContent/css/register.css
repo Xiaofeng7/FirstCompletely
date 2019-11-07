@@ -3,7 +3,7 @@
 	left: 35%;
 	top: 150px;
 	font-size: 30px;
-	color:white
+	color:#000
 }
 a{
 	color:red;
@@ -19,7 +19,7 @@ input{
 	background: transparent;
 	padding: 0.4em 0.25em;
 	border-radius: 50px;
-	color:white;
+	color:#000;
 }
 select{
 	width: 250px;

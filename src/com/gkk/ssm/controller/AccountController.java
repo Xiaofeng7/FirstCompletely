@@ -31,6 +31,17 @@ public class AccountController {
 	@Autowired
 	private InformationForUserService informationForUserService;
 	
+	/**  
+	* @Title: loginModelAndView  
+	* @Description: TODO
+	* @param @param request
+	* @param @param username
+	* @param @param passwd
+	* @param @return
+	* @param @throws Exception
+	* @return String
+	* @throws  
+	*/  
 	@RequestMapping("/login")
 	public String loginModelAndView(HttpServletRequest request,String username,String passwd) throws Exception {
 		
@@ -55,7 +66,7 @@ public class AccountController {
 	@RequestMapping("/register")
 	public String register(HttpServletRequest request,UserAccount account,InformationForUser information)throws Exception{
 		userAccountService.insertAccount(account);
-		Integer id = account.getId();
+		Integer id = account.getId();//获取刚插入的id
 		information.setUserid(id);
 		informationForUserService.insertInformation(information);
 		HttpSession session = request.getSession();
@@ -75,6 +86,15 @@ public class AccountController {
 		
 	}
 	
+	/**  
+	* @Title: information  
+	* @Description: 展示用户信息
+	* @param @param request
+	* @param @return
+	* @param @throws Exception
+	* @return ModelAndView
+	* @throws  
+	*/  
 	@RequestMapping("/information")
 	public ModelAndView information(HttpServletRequest request)throws Exception{
 		HttpSession session = request.getSession();
@@ -91,6 +111,15 @@ public class AccountController {
 		
 	}
 	
+	/**  
+	* @Title: goUpdateInformation  
+	* @Description: 展示用户信息并可以进行修改
+	* @param @param request
+	* @param @return
+	* @param @throws Exception
+	* @return ModelAndView
+	* @throws  
+	*/  
 	@RequestMapping("/goUpdateInformation")
 	public ModelAndView goUpdateInformation(HttpServletRequest request)throws Exception{
 		HttpSession session = request.getSession();
@@ -107,6 +136,16 @@ public class AccountController {
 		
 	}
 	
+	/**  
+	* @Title: updateInformation  
+	* @Description: 更新用户信息
+	* @param @param request
+	* @param @param information
+	* @param @return
+	* @param @throws Exception
+	* @return String
+	* @throws  
+	*/  
 	@RequestMapping("/updateInformation")
 	public String updateInformation(HttpServletRequest request,InformationForUser information)throws Exception{
 		HttpSession session = request.getSession();
