@@ -14,10 +14,33 @@
 		</property>
 	</bean>
 	
+	<!--开启aopproxy-target-class="true"默认是false,更改为true时使用的是cglib动态代理,这样只能实现对Controller层的日志记录-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--扫描日志记录切面-->
+    <context:component-scan base-package="package com.gkk.ssm.aspect" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Component"/>
+    </context:component-scan>
+    
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
+		
 			
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <!-- 多个拦截器，顺序执行 -->
+         <mvc:interceptor>
+           <!-- /** 表示所有的url，包括子url路径 -->
+            <mvc:mapping path="/**"/>
+            <!--不拦截的url  -->
+            <mvc:exclude-mapping path="/myaccount/login.action"/>
+            <mvc:exclude-mapping path="/myaccount/register.action"/>
+            <mvc:exclude-mapping path="/jsp/register.jsp"/>
+             <bean class="com.gkk.ssm.interceptor.LoginHandlerInterceptor"></bean>
+         </mvc:interceptor>
+    </mvc:interceptors>
+	    
+	    	
 </beans>

@@ -16,7 +16,7 @@
 		
 	<bean id="userAccountService" class="com.gkk.ssm.service.impl.UserAccountServiceImpl"></bean>	
 	<bean id="informationForUserService" class="com.gkk.ssm.service.impl.InformationForUserServiceImpl"></bean>	
-	
+	<bean id="systemLogAspectService" class="com.gkk.ssm.service.impl.SystemLogAspectServiceImpl"></bean>	
 	
 		
 </beans>

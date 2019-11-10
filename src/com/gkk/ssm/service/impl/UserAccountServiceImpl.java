@@ -10,7 +10,7 @@ import com.gkk.ssm.po.UserAccount;
 
 /**
 * @author : kkGuo
-* @createDate :2019Äê4ÔÂ6ÈÕ ÏÂÎç10:15:44
+* @createDate :2019ï¿½ï¿½4ï¿½ï¿½6ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½10:15:44
 */
 public class UserAccountServiceImpl implements UserAccountService {
 
@@ -24,8 +24,16 @@ public class UserAccountServiceImpl implements UserAccountService {
 	
 	@Override
 	public Integer insertAccount(UserAccount account) throws Exception {
-		// TODO Auto-generated method stub
-		return userAccountMapper.insertAccount(account);
+
+		Integer isSuccess = 0;
+		try {
+			isSuccess = userAccountMapper.insertAccount(account);
+			return isSuccess;
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+		
+		return isSuccess;
 	}
 
 	@Override

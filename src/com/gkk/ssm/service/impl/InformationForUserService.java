@@ -3,11 +3,13 @@ package com.gkk.ssm.service.impl;
 import com.gkk.ssm.po.InformationForUser;
 
 
-/**
-* @title :instruction
-* @author : GUO Kun-kun
-* @createDate :2019Äê6ÔÂ16ÈÕ ÏÂÎç12:14:35
-*/
+
+/** 
+ * @ClassName: InformationForUserService 
+ * @Description: TODO
+ * @author: gxf
+ * @date: 2019å¹´11æœˆ9æ—¥ ä¸Šåˆ9:41:37  
+ */
 public interface InformationForUserService {
 
 	public InformationForUser findByUserId(Integer accouId)throws Exception;

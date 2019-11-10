@@ -10,18 +10,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.gkk.ssm.annotation.SystemControllerLog;
 import com.gkk.ssm.po.InformationForUser;
 import com.gkk.ssm.po.Instrument;
 import com.gkk.ssm.po.UserAccount;
 import com.gkk.ssm.service.impl.InformationForUserService;
 import com.gkk.ssm.service.impl.UserAccountService;
 
-/**
-* @title :instruction
-* @author : GUO Kun-kun
-* @createDate :2019��6��13�� ����9:35:42
-*/
 
+/** 
+ * @ClassName: AccountController 
+ * @Description: TODO
+ * @author: gxf
+ * @date: 2019年11月8日 下午6:29:01  
+ */
 @Controller
 @RequestMapping("/myaccount")
 public class AccountController {
@@ -41,7 +43,8 @@ public class AccountController {
 	* @param @throws Exception
 	* @return String
 	* @throws  
-	*/  
+	*/ 
+	@SystemControllerLog(actionType = "用户操作",description="用户用户登录")
 	@RequestMapping("/login")
 	public String loginModelAndView(HttpServletRequest request,String username,String passwd) throws Exception {
 		
@@ -65,15 +68,19 @@ public class AccountController {
 	
 	@RequestMapping("/register")
 	public String register(HttpServletRequest request,UserAccount account,InformationForUser information)throws Exception{
-		userAccountService.insertAccount(account);
-		Integer id = account.getId();//��ȡ�ղ����id
-		information.setUserid(id);
-		informationForUserService.insertInformation(information);
-		HttpSession session = request.getSession();
-		session.setAttribute("accountId", id);
-		session.setAttribute("username", account.getUsername());
+		Integer isSuccess = userAccountService.insertAccount(account);
+		if (isSuccess!=0) {
+			Integer id = account.getId();
+			information.setUserid(id);
+			informationForUserService.insertInformation(information);
+			HttpSession session = request.getSession();
+			session.setAttribute("accountId", id);
+			session.setAttribute("username", account.getUsername());
+			return "forward:information.action";
+		}
 		
-		return "forward:information.action";
+		
+		return "forward:/jsp/register.jsp";
 		
 	}
 	
@@ -88,13 +95,14 @@ public class AccountController {
 	
 	/**  
 	* @Title: information  
-	* @Description: չʾ�û���Ϣ
+	* @Description:展示用户信息
 	* @param @param request
 	* @param @return
 	* @param @throws Exception
 	* @return ModelAndView
 	* @throws  
 	*/  
+	@SystemControllerLog(actionType = "用户操作",description="用户查看用户信息")
 	@RequestMapping("/information")
 	public ModelAndView information(HttpServletRequest request)throws Exception{
 		HttpSession session = request.getSession();
@@ -113,7 +121,7 @@ public class AccountController {
 	
 	/**  
 	* @Title: goUpdateInformation  
-	* @Description: չʾ�û���Ϣ�����Խ����޸�
+	* @Description: 展示用户信息并提供修改
 	* @param @param request
 	* @param @return
 	* @param @throws Exception
@@ -138,7 +146,7 @@ public class AccountController {
 	
 	/**  
 	* @Title: updateInformation  
-	* @Description: �����û���Ϣ
+	* @Description: 更新用户信息
 	* @param @param request
 	* @param @param information
 	* @param @return
@@ -146,6 +154,7 @@ public class AccountController {
 	* @return String
 	* @throws  
 	*/  
+	@SystemControllerLog(actionType = "用户操作",description="用户更新用户信息")
 	@RequestMapping("/updateInformation")
 	public String updateInformation(HttpServletRequest request,InformationForUser information)throws Exception{
 		HttpSession session = request.getSession();
@@ -165,6 +174,16 @@ public class AccountController {
 		
 	}
 	
+	/**  
+	* @Title: deleteAccount  
+	* @Description:删除用户
+	* @param @param inId
+	* @param @return
+	* @param @throws Exception
+	* @return ModelAndView
+	* @throws  
+	*/  
+	@SystemControllerLog(actionType = "管理员操作",description="管理员删除用户")
 	@RequestMapping("/deleteAccount")
 	public ModelAndView deleteAccount(Integer inId)throws Exception{
 		InformationForUser information = informationForUserService.findById(inId);
