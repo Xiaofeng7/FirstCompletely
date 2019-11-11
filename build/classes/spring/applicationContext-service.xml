@@ -17,6 +17,8 @@
 	<bean id="userAccountService" class="com.gkk.ssm.service.impl.UserAccountServiceImpl"></bean>	
 	<bean id="informationForUserService" class="com.gkk.ssm.service.impl.InformationForUserServiceImpl"></bean>	
 	<bean id="systemLogAspectService" class="com.gkk.ssm.service.impl.SystemLogAspectServiceImpl"></bean>	
+	<bean id="uploadFileService" class="com.gkk.ssm.service.impl.UploadFileServiceImpl"></bean>	
+	<bean id="uploadImageService" class="com.gkk.ssm.service.impl.UploadImageServiceImpl"></bean>	
 	
 		
 </beans>
