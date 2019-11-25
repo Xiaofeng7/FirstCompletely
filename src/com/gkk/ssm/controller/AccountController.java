@@ -57,7 +57,7 @@ public class AccountController {
 				HttpSession session = request.getSession();
 				session.setAttribute("accountId", id);
 				session.setAttribute("username", userName);
-				return "forward:information.action";
+				return "redirect:/Blogs/findAllPublicBlogs.action";
 			}else {
 				return "error";
 			}

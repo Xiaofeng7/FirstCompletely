@@ -44,10 +44,6 @@
 				<tr>
 					<td><label><a href="${pageContext.request.contextPath}/myaccount/goUpdateInformation.action">修改信息</a></label></td>
 				</tr>
-				<tr>
-					<td><label><a href="/FirstCompletely/FileRepository/files/16113328 赵新阳20191111001445_395.doc">我日</a></label></td>
-					<td><img src="${pageContext.request.contextPath}/FileRepository/images/3.jpg" width="555" height="555" alt="" title="" align="" /></td>
-				</tr>
 			</table>
 		</form>
 	</div>

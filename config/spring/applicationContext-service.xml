@@ -19,6 +19,7 @@
 	<bean id="systemLogAspectService" class="com.gkk.ssm.service.impl.SystemLogAspectServiceImpl"></bean>	
 	<bean id="uploadFileService" class="com.gkk.ssm.service.impl.UploadFileServiceImpl"></bean>	
 	<bean id="uploadImageService" class="com.gkk.ssm.service.impl.UploadImageServiceImpl"></bean>	
+	<bean id="blogsService" class="com.gkk.ssm.service.impl.BlogsServiceImpl"></bean>	
 	
 		
 </beans>
